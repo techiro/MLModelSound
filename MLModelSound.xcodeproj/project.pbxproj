@@ -13,6 +13,7 @@
 		03A2739724D683FA003FF48F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A2739524D683FA003FF48F /* Main.storyboard */; };
 		03A2739924D683FD003FF48F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A2739824D683FD003FF48F /* Assets.xcassets */; };
 		03A2739C24D683FD003FF48F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A2739A24D683FD003FF48F /* LaunchScreen.storyboard */; };
+		03A273A424D685F9003FF48F /* MySoundClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03A273A324D685F9003FF48F /* MySoundClassifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		03A2739824D683FD003FF48F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		03A2739B24D683FD003FF48F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03A2739D24D683FD003FF48F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03A273A324D685F9003FF48F /* MySoundClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MySoundClassifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				03A2738F24D683FA003FF48F /* AppDelegate.swift */,
 				03A2739124D683FA003FF48F /* SceneDelegate.swift */,
 				03A2739324D683FA003FF48F /* ViewController.swift */,
+				03A273A324D685F9003FF48F /* MySoundClassifier.mlmodel */,
 				03A2739524D683FA003FF48F /* Main.storyboard */,
 				03A2739824D683FD003FF48F /* Assets.xcassets */,
 				03A2739A24D683FD003FF48F /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03A2739424D683FA003FF48F /* ViewController.swift in Sources */,
+				03A273A424D685F9003FF48F /* MySoundClassifier.mlmodel in Sources */,
 				03A2739024D683FA003FF48F /* AppDelegate.swift in Sources */,
 				03A2739224D683FA003FF48F /* SceneDelegate.swift in Sources */,
 			);
