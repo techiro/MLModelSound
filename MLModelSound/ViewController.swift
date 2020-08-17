@@ -76,15 +76,25 @@ extension ViewController: ClassifierDelegate {
 
 class ResultsObserver: NSObject, SNResultsObserving {
     var delegate: ClassifierDelegate?
+    
     func request(_ request: SNRequest, didProduce result: SNResult) {
         guard let result = result as? SNClassificationResult,
             let classification = result.classifications.first else { return }
-        
-        
+
+
         let confidence = classification.confidence*100
-        
+
         if confidence > 60 {
             delegate?.displayPredictionResult(identifier: classification.identifier, confidence: confidence)
         }
     }
+    
+    func request(_ request: SNRequest, didFailWithError error: Error) {
+           print("The the analysis failed: \(error.localizedDescription)")
+       }
+       
+       func requestDidComplete(_ request: SNRequest) {
+           print("The request completed successfully!")
+       }
+    
 }
