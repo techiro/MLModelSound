@@ -29,37 +29,43 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         resultsObserver.delegate = self
-        inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
-        //分析するものはマイクの音声(ストリーミング)
-        analyzer = SNAudioStreamAnalyzer(format: inputFormat)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         startAudioEngine()
-        
+        setUpAnalyzer()
     }
     
-     private func startAudioEngine() {
-            do {
-                let request = try SNClassifySoundRequest(mlModel: soundClassifier.model)
-                try analyzer.add(request, withObserver: resultsObserver)
-            } catch {
-                print("Unable to prepare request: \(error.localizedDescription)")
-                return
-            }
-           
-            audioEngine.inputNode.installTap(onBus: 0, bufferSize: 8000, format: inputFormat) { buffer, time in
-                    self.analysisQueue.async {
-                        self.analyzer.analyze(buffer, atAudioFramePosition: time.sampleTime)
-                    }
-            }
-            
-            do{
+    private func startAudioEngine() {
+        
+        inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
+        do{
             try audioEngine.start()
-            }catch( _){
-                print("error in starting the Audio Engin")
+        }catch( _){
+            print("error in starting the Audio Engin")
+        }
+    }
+    
+    private func setUpAnalyzer() {
+        
+        //分析するものはマイクの音声(ストリーミング)
+        analyzer = SNAudioStreamAnalyzer(format: inputFormat)
+        
+        do {
+            let request = try SNClassifySoundRequest(mlModel: soundClassifier.model)
+            try analyzer.add(request, withObserver: resultsObserver)
+        } catch {
+            print("Unable to prepare request: \(error.localizedDescription)")
+            return
+        }
+        
+        audioEngine.inputNode.installTap(onBus: 0, bufferSize: 8000, format: inputFormat) { buffer, time in
+            self.analysisQueue.async {
+                self.analyzer.analyze(buffer, atAudioFramePosition: time.sampleTime)
             }
         }
+        
+    }
 }
 
 
