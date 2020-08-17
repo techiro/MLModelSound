@@ -9,7 +9,6 @@
 import UIKit
 import AVKit
 import SoundAnalysis
-
 protocol ClassifierDelegate {
     func displayPredictionResult(data: String)
 }
@@ -101,7 +100,7 @@ class ResultsObserver: NSObject, SNResultsObserving {
         for i in 0...classifications.count-1 {
             let classification = classifications[i]
             let identifier = classification.identifier
-            let confidence = classification.confidence*100
+            let confidence = floor(classification.confidence*100*100)/100
             textResult += "\(identifier) \(confidence)\n"
             
         }

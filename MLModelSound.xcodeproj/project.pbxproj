@@ -14,6 +14,16 @@
 		03A2739924D683FD003FF48F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A2739824D683FD003FF48F /* Assets.xcassets */; };
 		03A2739C24D683FD003FF48F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03A2739A24D683FD003FF48F /* LaunchScreen.storyboard */; };
 		03A273A424D685F9003FF48F /* MySoundClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 03A273A324D685F9003FF48F /* MySoundClassifier.mlmodel */; };
+		03F988E224EA53B0003CCA80 /* blues.00000.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988E124EA53B0003CCA80 /* blues.00000.wav */; };
+		03F988E424EA53B9003CCA80 /* classical.00000.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988E324EA53B9003CCA80 /* classical.00000.wav */; };
+		03F988E624EA53D3003CCA80 /* country.00006.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988E524EA53D3003CCA80 /* country.00006.wav */; };
+		03F988E824EA53DF003CCA80 /* disco.00004.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988E724EA53DF003CCA80 /* disco.00004.wav */; };
+		03F988EA24EA53F3003CCA80 /* hiphop.00002.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988E924EA53F3003CCA80 /* hiphop.00002.wav */; };
+		03F988EC24EA53FA003CCA80 /* jazz.00000.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988EB24EA53FA003CCA80 /* jazz.00000.wav */; };
+		03F988EE24EA5400003CCA80 /* metal.00000.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988ED24EA5400003CCA80 /* metal.00000.wav */; };
+		03F988F024EA5406003CCA80 /* pop.00000.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988EF24EA5406003CCA80 /* pop.00000.wav */; };
+		03F988F224EA5410003CCA80 /* reggae.00000.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988F124EA5410003CCA80 /* reggae.00000.wav */; };
+		03F988F424EA5429003CCA80 /* rock.00002.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03F988F324EA5429003CCA80 /* rock.00002.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +36,16 @@
 		03A2739B24D683FD003FF48F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03A2739D24D683FD003FF48F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03A273A324D685F9003FF48F /* MySoundClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MySoundClassifier.mlmodel; sourceTree = "<group>"; };
+		03F988E124EA53B0003CCA80 /* blues.00000.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blues.00000.wav; sourceTree = "<group>"; };
+		03F988E324EA53B9003CCA80 /* classical.00000.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = classical.00000.wav; sourceTree = "<group>"; };
+		03F988E524EA53D3003CCA80 /* country.00006.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = country.00006.wav; sourceTree = "<group>"; };
+		03F988E724EA53DF003CCA80 /* disco.00004.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = disco.00004.wav; sourceTree = "<group>"; };
+		03F988E924EA53F3003CCA80 /* hiphop.00002.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hiphop.00002.wav; sourceTree = "<group>"; };
+		03F988EB24EA53FA003CCA80 /* jazz.00000.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jazz.00000.wav; sourceTree = "<group>"; };
+		03F988ED24EA5400003CCA80 /* metal.00000.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = metal.00000.wav; sourceTree = "<group>"; };
+		03F988EF24EA5406003CCA80 /* pop.00000.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pop.00000.wav; sourceTree = "<group>"; };
+		03F988F124EA5410003CCA80 /* reggae.00000.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = reggae.00000.wav; sourceTree = "<group>"; };
+		03F988F324EA5429003CCA80 /* rock.00002.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rock.00002.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +81,7 @@
 				03A2738F24D683FA003FF48F /* AppDelegate.swift */,
 				03A2739124D683FA003FF48F /* SceneDelegate.swift */,
 				03A2739324D683FA003FF48F /* ViewController.swift */,
+				03F988F524EA543A003CCA80 /* Musics */,
 				03A273A324D685F9003FF48F /* MySoundClassifier.mlmodel */,
 				03A2739524D683FA003FF48F /* Main.storyboard */,
 				03A2739824D683FD003FF48F /* Assets.xcassets */,
@@ -68,6 +89,23 @@
 				03A2739D24D683FD003FF48F /* Info.plist */,
 			);
 			path = MLModelSound;
+			sourceTree = "<group>";
+		};
+		03F988F524EA543A003CCA80 /* Musics */ = {
+			isa = PBXGroup;
+			children = (
+				03F988E124EA53B0003CCA80 /* blues.00000.wav */,
+				03F988E324EA53B9003CCA80 /* classical.00000.wav */,
+				03F988E524EA53D3003CCA80 /* country.00006.wav */,
+				03F988E724EA53DF003CCA80 /* disco.00004.wav */,
+				03F988E924EA53F3003CCA80 /* hiphop.00002.wav */,
+				03F988EB24EA53FA003CCA80 /* jazz.00000.wav */,
+				03F988ED24EA5400003CCA80 /* metal.00000.wav */,
+				03F988EF24EA5406003CCA80 /* pop.00000.wav */,
+				03F988F124EA5410003CCA80 /* reggae.00000.wav */,
+				03F988F324EA5429003CCA80 /* rock.00002.wav */,
+			);
+			path = Musics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +166,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F988E224EA53B0003CCA80 /* blues.00000.wav in Resources */,
+				03F988E824EA53DF003CCA80 /* disco.00004.wav in Resources */,
+				03F988E624EA53D3003CCA80 /* country.00006.wav in Resources */,
 				03A2739C24D683FD003FF48F /* LaunchScreen.storyboard in Resources */,
+				03F988F024EA5406003CCA80 /* pop.00000.wav in Resources */,
+				03F988EE24EA5400003CCA80 /* metal.00000.wav in Resources */,
+				03F988EA24EA53F3003CCA80 /* hiphop.00002.wav in Resources */,
+				03F988F424EA5429003CCA80 /* rock.00002.wav in Resources */,
+				03F988EC24EA53FA003CCA80 /* jazz.00000.wav in Resources */,
 				03A2739924D683FD003FF48F /* Assets.xcassets in Resources */,
+				03F988F224EA5410003CCA80 /* reggae.00000.wav in Resources */,
 				03A2739724D683FA003FF48F /* Main.storyboard in Resources */,
+				03F988E424EA53B9003CCA80 /* classical.00000.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
