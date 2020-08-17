@@ -15,7 +15,7 @@ protocol ClassifierDelegate {
 }
 
 class ViewController: UIViewController {
-
+    
     private let audioEngine = AVAudioEngine()
     private var soundClassifier = MySoundClassifier()
     
@@ -34,6 +34,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         startAudioEngine()
         setUpAnalyzer()
+        startAnalyze()
     }
     
     private func startAudioEngine() {
@@ -58,13 +59,16 @@ class ViewController: UIViewController {
             print("Unable to prepare request: \(error.localizedDescription)")
             return
         }
+
+    }
+    
+    private func startAnalyze() {
         
         audioEngine.inputNode.installTap(onBus: 0, bufferSize: 8000, format: inputFormat) { buffer, time in
             self.analysisQueue.async {
                 self.analyzer.analyze(buffer, atAudioFramePosition: time.sampleTime)
             }
         }
-        
     }
 }
 
@@ -86,21 +90,21 @@ class ResultsObserver: NSObject, SNResultsObserving {
     func request(_ request: SNRequest, didProduce result: SNResult) {
         guard let result = result as? SNClassificationResult,
             let classification = result.classifications.first else { return }
-
-
+        
+        
         let confidence = classification.confidence*100
-
+        
         if confidence > 60 {
             delegate?.displayPredictionResult(identifier: classification.identifier, confidence: confidence)
         }
     }
     
     func request(_ request: SNRequest, didFailWithError error: Error) {
-           print("The the analysis failed: \(error.localizedDescription)")
-       }
-       
-       func requestDidComplete(_ request: SNRequest) {
-           print("The request completed successfully!")
-       }
+        print("The the analysis failed: \(error.localizedDescription)")
+    }
+    
+    func requestDidComplete(_ request: SNRequest) {
+        print("The request completed successfully!")
+    }
     
 }
