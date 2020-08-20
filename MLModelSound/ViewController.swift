@@ -33,8 +33,8 @@ class ViewController: UIViewController {
         resultsObserver.delegate = self
         setUpAudioEngine()
         setUpAnalyzer()
-        startAudioEngine()
         startAnalyze()
+        startAudioEngine()
        
     }
     
