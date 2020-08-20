@@ -39,6 +39,14 @@
                                     <constraint firstAttribute="trailing" secondItem="x6h-R6-8km" secondAttribute="trailing" constant="8" id="ofh-UO-qxJ"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GUV-FY-LcW">
+                                <rect key="frame" x="184" y="682" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="didTappedButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cuD-dt-EhH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>

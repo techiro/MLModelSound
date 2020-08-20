@@ -17,7 +17,9 @@ class ViewController: UIViewController {
     
     private let audioEngine = AVAudioEngine()
     private var soundClassifier = MySoundClassifier()
+    var audioPlayerNode = AVAudioPlayerNode()
     
+    var audioFile:AVAudioFile!
     var inputFormat: AVAudioFormat!
     var analyzer: SNAudioStreamAnalyzer!
     var resultsObserver = ResultsObserver()
@@ -28,24 +30,51 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         resultsObserver.delegate = self
+        setUpAudioEngine()
+        setUpAnalyzer()
+        startAnalyze()
+        startAudioEngine()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        startAudioEngine()
-        setUpAnalyzer()
-        startAnalyze()
+
+    }
+    private func setUpAudioEngine() {
+        do {
+            audioFile = try AVAudioFile(forReading: getAudioFileUrl())
+        } catch {
+            fatalError("can't add audioFile.")
+        }
+        //音楽再生のセットアップ
+        audioEngine.attach(audioPlayerNode)
+        audioEngine.connect(audioPlayerNode, to: audioEngine.mainMixerNode, format: audioFile.processingFormat)
+        
+        //マイクのセットアップ
+        inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
+        audioEngine.connect(audioEngine.inputNode, to: audioEngine.mainMixerNode, format: inputFormat)
+        audioEngine.prepare()
     }
     
     private func startAudioEngine() {
         
-        inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
         do{
             try audioEngine.start()
-        }catch( _){
-            print("error in starting the Audio Engin")
+            audioPlayerNode.scheduleFile(audioFile!, at: nil, completionCallbackType: .dataPlayedBack) { (callback) in
+                print(self.audioPlayerNode.isPlaying)
+            }
+            
+        }catch{
+            print(error)
         }
     }
     
+    private func getAudioFileUrl() throws-> URL{
+        if let url = Bundle.main.url(forResource: "blues.00000", withExtension: "wav") {
+           return url
+        }else {
+            fatalError("not exist URL")
+        }
+    }
     private func setUpAnalyzer() {
         
         //分析するものはマイクの音声(ストリーミング)
@@ -69,6 +98,11 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func didTappedButton(_ sender: Any) {
+        audioPlayerNode.play()
+    }
+    
 }
 
 
@@ -101,6 +135,11 @@ class ResultsObserver: NSObject, SNResultsObserving {
             let classification = classifications[i]
             let identifier = classification.identifier
             let confidence = floor(classification.confidence*100*100)/100
+            if confidence > 60 {
+                print(confidence)
+                
+            }
+            
             textResult += "\(identifier) \(confidence)\n"
             
         }
