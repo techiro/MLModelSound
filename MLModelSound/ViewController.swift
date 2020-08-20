@@ -11,6 +11,7 @@ import AVKit
 import SoundAnalysis
 protocol ClassifierDelegate {
     func displayPredictionResult(data: String)
+    func playerPlay()
 }
 
 class ViewController: UIViewController {
@@ -32,8 +33,9 @@ class ViewController: UIViewController {
         resultsObserver.delegate = self
         setUpAudioEngine()
         setUpAnalyzer()
-        startAnalyze()
         startAudioEngine()
+        startAnalyze()
+       
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -107,6 +109,10 @@ class ViewController: UIViewController {
 
 
 extension ViewController: ClassifierDelegate {
+    func playerPlay() {
+        self.audioPlayerNode.play()
+    }
+    
     func displayPredictionResult(data: String) {
         DispatchQueue.main.async {
             self.predictLabel.text = data
@@ -125,7 +131,7 @@ extension ViewController: ClassifierDelegate {
 
 class ResultsObserver: NSObject, SNResultsObserving {
     var delegate: ClassifierDelegate?
-    
+    var count = 0
     func request(_ request: SNRequest, didProduce result: SNResult) {
         guard let result = result as? SNClassificationResult else { return }
         let classifications = result.classifications
@@ -135,11 +141,15 @@ class ResultsObserver: NSObject, SNResultsObserving {
             let classification = classifications[i]
             let identifier = classification.identifier
             let confidence = floor(classification.confidence*100*100)/100
-            if confidence > 60 {
-                print(confidence)
+            if identifier == "blues" && confidence > 90  {
+                
+                count += 1
+                print(count)
                 
             }
-            
+            if count >= 20 {
+                 delegate?.playerPlay()
+            }
             textResult += "\(identifier) \(confidence)\n"
             
         }
